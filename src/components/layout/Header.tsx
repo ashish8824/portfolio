@@ -6,7 +6,7 @@ export default function Header() {
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Name */}
         <span className="font-semibold text-gray-900 tracking-tight">
-          Ashish Anand Prag Bharti
+          Ashish Anand
         </span>
 
         {/* Nav Links */}
