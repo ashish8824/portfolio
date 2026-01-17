@@ -17,7 +17,7 @@ export default function Contact() {
           {/* Contact Form */}
           <form
             className="mt-10 grid gap-6 text-left"
-            action="https://formsubmit.co/ashish.anand@email.com"
+            action="https://formsubmit.co/ashishanand8824@gmail.com"
             method="POST"
           >
             {/* Disable captcha */}

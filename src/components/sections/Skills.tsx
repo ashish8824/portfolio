@@ -1,36 +1,54 @@
 export default function Skills() {
   const skills = {
-    Backend: [
+    "Backend Engineering": [
       "Node.js",
-      "Express",
-      "MongoDB",
-      "JWT Authentication",
+      "Express.js",
       "REST API Design",
-      "Socket.IO",
+      "JWT Authentication",
+      "Role-Based Access Control",
+      "Socket.IO (Real-time Systems)",
     ],
-    Frontend: ["React", "Next.js", "Redux Toolkit", "Tailwind CSS"],
-    Infrastructure: ["Docker", "Basic AWS", "Nginx", "CI/CD Concepts"],
+    "Frontend & Web": ["React.js", "Next.js", "HTML5", "CSS3"],
+    Databases: ["MongoDB", "PostgreSQL", "Supabase"],
+    "Languages & Core": [
+      "JavaScript",
+      "TypeScript",
+      "SQL",
+      "Python",
+      "C / C++",
+    ],
+    "Tools & Platform": [
+      "Git & GitHub",
+      "Swagger (OpenAPI)",
+      "Azure",
+      "AWS (basic)",
+      "Linux & Bash (basic)",
+    ],
   };
 
   return (
     <section id="skills" className="py-24 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-semibold text-gray-900">Tools I Trust</h2>
+        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900">
+          Skills
+        </h2>
 
-        <p className="mt-4 text-gray-600 max-w-2xl">
-          Technologies I’ve used to build, ship, and maintain real-world
-          applications.
+        <p className="mt-5 text-lg text-gray-600 max-w-2xl">
+          Technologies and tools I’ve used to build scalable, production-grade
+          backend systems.
         </p>
 
-        <div className="mt-16 grid gap-10 md:grid-cols-3">
+        <div className="mt-16 grid gap-8 md:grid-cols-3">
           {Object.entries(skills).map(([category, items]) => (
             <div
               key={category}
-              className="rounded-2xl bg-white p-8 border border-gray-200 shadow-sm"
+              className="rounded-2xl bg-white border border-gray-200 p-8 shadow-sm"
             >
-              <h3 className="text-xl font-semibold mb-6">{category}</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                {category}
+              </h3>
 
-              <ul className="space-y-3 text-gray-600 text-sm">
+              <ul className="space-y-2 text-sm text-gray-600">
                 {items.map((skill) => (
                   <li key={skill}>• {skill}</li>
                 ))}
