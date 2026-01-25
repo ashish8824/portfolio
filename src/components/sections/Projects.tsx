@@ -8,12 +8,31 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "Second Brain – AI-Powered Personal Knowledge Management",
+    description:
+      "An AI-powered personal knowledge management platform that allows users to capture, organize, search, and intelligently query their saved information using semantic search and natural language AI.",
+    techStack: [
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT Authentication",
+      "Hugging Face Inference API",
+      "Semantic Search (Embeddings)",
+      "Swagger (OpenAPI)",
+      "React.js",
+      "Tailwind CSS",
+      "AWS EC2",
+    ],
+    githubUrl: "https://github.com/yourusername/second-brain-backend",
+    liveUrl: "http://16.171.12.184/",
+  },
+  {
     title: "Smart Appointment & Queue Management",
     description:
       "A real-time appointment booking and queue tracking system designed to reduce waiting times, improve staff efficiency, and provide live queue visibility for users.",
     techStack: ["MERN", "JWT", "Socket.IO", "Role-Based Access"],
-    githubUrl: "https://github.com/yourusername/queue-management",
-    liveUrl: "https://your-live-demo.com",
+    githubUrl: "https://github.com/ashish8824/appointment-system-backend",
+    // liveUrl: "https://your-live-demo.com",
   },
 ];
 

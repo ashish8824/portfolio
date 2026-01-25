@@ -25,16 +25,6 @@ export default function Header() {
               Contact
             </a>
           </div>
-
-          {/* Resume */}
-          <a
-            href="/cv.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-4 px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:border-gray-500 hover:text-gray-900 transition"
-          >
-            Resume
-          </a>
         </div>
       </nav>
     </header>

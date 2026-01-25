@@ -8,7 +8,7 @@ export default function Skills() {
       "Role-Based Access Control",
       "Socket.IO (Real-time Systems)",
     ],
-    "Frontend & Web": ["React.js", "Next.js", "HTML5", "CSS3"],
+    "Frontend & Web": ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS"],
     Databases: ["MongoDB", "PostgreSQL", "Supabase"],
     "Languages & Core": [
       "JavaScript",
