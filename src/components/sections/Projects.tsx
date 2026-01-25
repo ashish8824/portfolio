@@ -23,7 +23,7 @@ const projects: Project[] = [
       "Tailwind CSS",
       "AWS EC2",
     ],
-    githubUrl: "https://github.com/yourusername/second-brain-backend",
+    githubUrl: "https://github.com/ashish8824/second--brain-",
     liveUrl: "http://16.171.12.184/",
   },
   {
