@@ -1,36 +1,73 @@
+"use client";
+
+import { notes } from "@/data";
+
 export default function Notes() {
-  const notes = [
-    "Why I prefer backend-first development for scalable systems",
-    "Mistakes I made while designing APIs and what I learned",
-    "What building real-time systems taught me about state",
-    "Lessons from designing multi-tenant applications",
-  ];
-
   return (
-    <section
-      id="notes"
-      className="py-24 bg-gradient-to-b from-gray-50 to-white"
-    >
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900">
-          Developer Notes
-        </h2>
-
-        <p className="mt-5 text-lg text-gray-600 max-w-2xl">
-          Practical lessons and reflections from building real-world software
-          systems.
+    <section id="notes" style={{ background: "var(--bg)" }}>
+      <div className="section-wrap">
+        <div className="accent-bar" />
+        <p className="mono-label mb-3">Writing</p>
+        <h2 className="section-heading">Developer Notes</h2>
+        <p
+          className="mt-4 max-w-xl"
+          style={{
+            color: "var(--muted-hi)",
+            lineHeight: 1.7,
+            fontSize: "1rem",
+          }}
+        >
+          Practical lessons and reflections from building real-world software.
         </p>
 
-        {/* Notes Grid */}
-        <div className="mt-20 grid gap-8 md:grid-cols-2">
-          {notes.map((note) => (
-            <div
-              key={note}
-              className="rounded-2xl bg-white p-8 border border-gray-200 shadow-sm hover:shadow-lg transition"
+        <div className="mt-14 grid gap-4 sm:grid-cols-2">
+          {notes.map((note, i) => (
+            <a
+              key={note.title}
+              href={note.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card p-6 group flex items-start gap-4"
+              style={{ textDecoration: "none" }}
             >
-              <p className="text-gray-700 leading-relaxed">{note}</p>
-            </div>
+              {/* Number */}
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.7rem",
+                  color: "var(--accent)",
+                  opacity: 0.6,
+                  marginTop: "0.25rem",
+                  flexShrink: 0,
+                }}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <div className="flex-1 min-w-0">
+                <p
+                  style={{
+                    color: "var(--text)",
+                    lineHeight: 1.6,
+                    fontSize: "0.95rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  {note.title}
+                </p>
+                <span
+                  className="inline-flex items-center gap-1 mt-3"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.7rem",
+                    color: "var(--accent)",
+                    opacity: 0.7,
+                  }}
+                >
+                  Read more ↗
+                </span>
+              </div>
+            </a>
           ))}
         </div>
       </div>

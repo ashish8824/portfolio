@@ -1,58 +1,77 @@
+"use client";
+
+import { skills } from "@/data";
+
+const categoryColors: Record<string, string> = {
+  "Backend Engineering": "tag",
+  "Frontend & Web": "tag tag-cyan",
+  Databases: "tag",
+  "Languages & Core": "tag tag-cyan",
+  "Tools & Platform": "tag",
+};
+
 export default function Skills() {
-  const skills = {
-    "Backend Engineering": [
-      "Node.js",
-      "Express.js",
-      "REST API Design",
-      "JWT Authentication",
-      "Role-Based Access Control",
-      "Socket.IO (Real-time Systems)",
-    ],
-    "Frontend & Web": ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS"],
-    Databases: ["MongoDB", "PostgreSQL", "Supabase"],
-    "Languages & Core": [
-      "JavaScript",
-      "TypeScript",
-      "SQL",
-      "Python",
-      "C / C++",
-    ],
-    "Tools & Platform": [
-      "Git & GitHub",
-      "Swagger (OpenAPI)",
-      "Azure",
-      "AWS (basic)",
-      "Linux & Bash (basic)",
-    ],
-  };
-
   return (
-    <section id="skills" className="py-24 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900">
-          Skills
-        </h2>
-
-        <p className="mt-5 text-lg text-gray-600 max-w-2xl">
-          Technologies and tools I’ve used to build scalable, production-grade
-          backend systems.
+    <section id="skills" style={{ background: "var(--bg)" }}>
+      <div className="section-wrap">
+        <div className="accent-bar" />
+        <p className="mono-label mb-3">Technical Stack</p>
+        <h2 className="section-heading">Skills</h2>
+        <p
+          className="mt-4 max-w-xl"
+          style={{
+            color: "var(--muted-hi)",
+            lineHeight: 1.7,
+            fontSize: "1rem",
+          }}
+        >
+          Technologies and tools I&apos;ve used to build scalable,
+          production-grade systems.
         </p>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {Object.entries(skills).map(([category, items]) => (
-            <div
-              key={category}
-              className="rounded-2xl bg-white border border-gray-200 p-8 shadow-sm"
-            >
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
-                {category}
-              </h3>
+            <div key={category} className="card p-6">
+              {/* Category header */}
+              <div className="flex items-center gap-2 mb-5">
+                <span
+                  style={{
+                    display: "inline-block",
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background:
+                      category.includes("Frontend") ||
+                      category.includes("Languages")
+                        ? "var(--accent2)"
+                        : "var(--accent)",
+                  }}
+                />
+                <h3
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.78rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "var(--muted-hi)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {category}
+                </h3>
+              </div>
 
-              <ul className="space-y-2 text-sm text-gray-600">
+              {/* Skill tags */}
+              <div className="flex flex-wrap gap-2">
                 {items.map((skill) => (
-                  <li key={skill}>• {skill}</li>
+                  <span
+                    key={skill}
+                    className={categoryColors[category] ?? "tag"}
+                  >
+                    {skill}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>

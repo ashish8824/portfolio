@@ -1,61 +1,106 @@
-type ExperienceItem = {
-  role: string;
-  company: string;
-  location: string;
-  period: string;
-  points: string[];
-};
+"use client";
 
-const experience: ExperienceItem[] = [
-  {
-    role: "Junior Associate Engineer",
-    company: "Celebal Technologies",
-    location: "Jaipur, Rajasthan",
-    period: "Jul 2023 – Oct 2023",
-    points: [
-      "Developed and maintained backend REST APIs using Node.js and Express with strong validation and error handling.",
-      "Debugged backend failures by analyzing logs and improving service reliability and response times.",
-      "Assisted in deployment and monitoring of backend services on Microsoft Azure.",
-      "Built chatbot-based automation tools using Microsoft Bot Framework.",
-    ],
-  },
-];
+import { experience } from "@/data";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900">
-          Experience
-        </h2>
-
-        <p className="mt-5 text-lg text-gray-600 max-w-2xl">
-          Professional and hands-on experience building backend systems and
-          real-world applications.
+    <section
+      id="experience"
+      style={{
+        background: "var(--bg-card)",
+        borderTop: "1px solid var(--border)",
+        borderBottom: "1px solid var(--border)",
+      }}
+    >
+      <div className="section-wrap">
+        <div className="accent-bar" />
+        <p className="mono-label mb-3">Career</p>
+        <h2 className="section-heading">Experience</h2>
+        <p
+          className="mt-4 max-w-xl"
+          style={{
+            color: "var(--muted-hi)",
+            lineHeight: 1.7,
+            fontSize: "1rem",
+          }}
+        >
+          Professional experience building backend systems and real-world
+          applications.
         </p>
 
-        <div className="mt-16 space-y-12">
+        <div className="mt-14 space-y-8">
           {experience.map((item) => (
             <div
               key={item.role}
-              className="rounded-2xl border border-gray-200 bg-gray-50 p-8"
+              className="card p-6 sm:p-8 relative overflow-hidden"
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {item.role}
-                </h3>
-                <span className="text-sm text-gray-500">{item.period}</span>
+              {/* Left accent line */}
+              <div
+                className="absolute left-0 top-0 bottom-0 w-0.5"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, var(--accent), transparent)",
+                }}
+              />
+
+              <div className="pl-4 sm:pl-6">
+                {/* Header row */}
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                  <h3
+                    style={{
+                      fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
+                      fontWeight: 600,
+                      color: "var(--text)",
+                    }}
+                  >
+                    {item.role}
+                  </h3>
+                  <span
+                    className="tag"
+                    style={{ whiteSpace: "nowrap", fontSize: "0.7rem" }}
+                  >
+                    {item.period}
+                  </span>
+                </div>
+
+                {/* Company */}
+                <p
+                  className="mb-5"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.82rem",
+                    color: "var(--accent2)",
+                  }}
+                >
+                  {item.company} · {item.location}
+                </p>
+
+                {/* Points */}
+                <ul className="space-y-2.5">
+                  {item.points.map((point) => (
+                    <li
+                      key={point}
+                      className="flex gap-3"
+                      style={{
+                        fontSize: "0.9rem",
+                        color: "var(--muted-hi)",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "var(--accent)",
+                          marginTop: "0.2rem",
+                          flexShrink: 0,
+                        }}
+                      >
+                        ›
+                      </span>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <p className="mt-1 text-gray-700 font-medium">
-                {item.company} · {item.location}
-              </p>
-
-              <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                {item.points.map((point) => (
-                  <li key={point}>• {point}</li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>

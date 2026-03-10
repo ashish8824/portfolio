@@ -1,44 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
-/* ---------- Base styles ---------- */
+/* ── CSS Variables ─────────────────────────────────── */
+:root {
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Sora", sans-serif;
+
+  --bg: #0a0a0f;
+  --bg-card: #111118;
+  --bg-hover: #16161f;
+  --border: #1e1e2e;
+  --border-hi: #2e2e4e;
+  --accent: #7fff6e; /* terminal green */
+  --accent2: #5ce8ff; /* cyan */
+  --text: #e8e8f0;
+  --muted: #6b6b80;
+  --muted-hi: #9999b0;
+}
+
+/* ── Base ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
+  font-family: var(--font-sans);
 }
 
 body {
-  background-color: white;
-  color: rgb(17, 24, 39); /* gray-900 */
+  background-color: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* ---------- Custom utility classes ---------- */
-.section {
-  max-width: 72rem; /* max-w-6xl */
-  margin-left: auto;
-  margin-right: auto;
-  padding: 6rem 1.5rem;
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hi);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
 
-.heading {
-  font-size: 2.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+/* ── Selection ─────────────────────────────────────── */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
 }
 
-@media (min-width: 768px) {
-  .heading {
-    font-size: 3rem;
+/* ── Grid background utility ───────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(circle, #ffffff0a 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Gradient text ─────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glow button ───────────────────────────────────── */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-glow:hover::after {
+  opacity: 1;
+}
+
+/* ── Scanline overlay ──────────────────────────────── */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Animate fade-up ───────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: translate(-2px, 0);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(2px, 0);
+  }
+  40% {
+    clip-path: inset(43% 0 1% 0);
+    transform: translate(-2px, 0);
+  }
+  60% {
+    clip-path: inset(25% 0 58% 0);
+    transform: translate(2px, 0);
+  }
+  80% {
+    clip-path: inset(54% 0 7% 0);
+    transform: translate(-2px, 0);
+  }
+  100% {
+    clip-path: inset(58% 0 43% 0);
+    transform: translate(2px, 0);
   }
 }
 
-.subtext {
-  margin-top: 1rem;
-  font-size: 1.125rem;
-  color: rgb(75, 85, 99); /* gray-600 */
-  max-width: 40rem;
+.animate-fadeUp {
+  animation: fadeUp 0.7s ease both;
+}
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+.animate-delay-2 {
+  animation-delay: 0.2s;
+}
+.animate-delay-3 {
+  animation-delay: 0.35s;
+}
+.animate-delay-4 {
+  animation-delay: 0.5s;
 }
 
-footer {
-  margin-top: 2rem;
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Card ──────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s;
+}
+.card:hover {
+  border-color: var(--border-hi);
+  box-shadow:
+    0 0 0 1px var(--border-hi),
+    0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ── Section base ──────────────────────────────────── */
+.section-wrap {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .section-wrap {
+    padding: 4rem 1rem;
+  }
+}
+
+/* ── Mono label ────────────────────────────────────── */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Tag pill ──────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  background: rgba(127, 255, 110, 0.07);
+  border: 1px solid rgba(127, 255, 110, 0.2);
+  color: var(--accent);
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.tag:hover {
+  background: rgba(127, 255, 110, 0.14);
+  border-color: rgba(127, 255, 110, 0.4);
+}
+.tag-cyan {
+  background: rgba(92, 232, 255, 0.07);
+  border-color: rgba(92, 232, 255, 0.2);
+  color: var(--accent2);
+}
+
+/* ── Section heading ───────────────────────────────── */
+.section-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+
+/* ── Accent bar ────────────────────────────────────── */
+.accent-bar {
+  display: inline-block;
+  width: 32px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-bottom: 1rem;
 }
