@@ -109,7 +109,8 @@ export const projects: Project[] = [
       "Tailwind CSS",
       "AWS EC2",
     ],
-    githubUrl: "https://github.com/ashish8824/second--brain-",
+    githubUrl: "https://github.com/ashish8824/second-brain-frontend",
+    githubUrlBackend: "https://github.com/ashish8824/second--brain-",
     liveUrl: "http://16.171.12.184/",
   },
   {
